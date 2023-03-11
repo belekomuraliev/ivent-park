@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import IventUser
+from .models import Author
 
-admin.site.register(IventUser)
+admin.site.register(Author)
 
 

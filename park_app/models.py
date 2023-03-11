@@ -3,7 +3,7 @@ from PIL import Image
 from io import BytesIO
 from django.core.files import File
 
-from park_user.models import IventUser
+from park_user.models import Author
 
 
 def compress_image(img, file_format='png', new_width=None, new_height=None ):
@@ -30,7 +30,7 @@ class Ivent(models.Model):
     data_start = models.DateField()
     location =  models.CharField(max_length=255)
     description = models.TextField()
-    ivent_user = models.ForeignKey(IventUser, on_delete=models.CASCADE, related_name='ivent')
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='author')
 
     def save(self, *args, **kwargs):
         self.image = compress_image(self.image, new_width=500)
@@ -47,8 +47,8 @@ class Creater(models.Model):
     instagram = models.CharField(max_length=50, )
     telegram = models.CharField(max_length=50, )
     whatsapp = models.CharField(max_length=50, )
-    gmail = models.CharField(max_length=50, )
-    ivent_user = models.ForeignKey(IventUser, on_delete=models.CASCADE)
+    email = models.EmailField()
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
         self.image = compress_image(self.image, new_width=500)

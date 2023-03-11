@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import IventUser, User
+from .models import Author, User
 
 
 class AuthorSerializer(serializers.ModelSerializer):
@@ -7,8 +7,9 @@ class AuthorSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=20, write_only=True)
     password_2 = serializers.CharField(max_length=20, write_only=True)
 
+
     class Meta:
-        model = IventUser
+        model = Author
         fields = '__all__'
         read_only_fields = ['user']
 
@@ -25,7 +26,7 @@ class AuthorSerializer(serializers.ModelSerializer):
         except Exception as e:
             raise serializers.ValidationError(f'Не удается создать пользователя. {e}')
         else:
-            new_author = IventUser.objects.create(
+            new_author = Author.objects.create(
                 user=new_user
             )
             new_author.save()
