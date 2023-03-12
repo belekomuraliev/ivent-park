@@ -7,7 +7,6 @@ class AuthorSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=20, write_only=True)
     password_2 = serializers.CharField(max_length=20, write_only=True)
 
-
     class Meta:
         model = Author
         fields = '__all__'

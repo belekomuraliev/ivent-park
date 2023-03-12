@@ -43,12 +43,12 @@ class Ivent(models.Model):
 class Creater(models.Model):
     name = models.CharField(max_length=50)
     activity = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='photos', blank=True)
-    instagram = models.CharField(max_length=50, )
-    telegram = models.CharField(max_length=50, )
-    whatsapp = models.CharField(max_length=50, )
-    email = models.EmailField()
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='photos', blank=True, null=True)
+    instagram = models.CharField(max_length=50, blank=True, null=True )
+    telegram = models.CharField(max_length=50, blank=True, null=True)
+    whatsapp = models.CharField(max_length=50, blank=True, null=True)
+    gmail = models.CharField(max_length=30, blank=True, null=True)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='creater')
 
     def save(self, *args, **kwargs):
         self.image = compress_image(self.image, new_width=500)
