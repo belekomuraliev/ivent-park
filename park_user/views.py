@@ -8,3 +8,8 @@ class AuthorRegisterAPIView(ListCreateAPIView):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
 
+
+class AuthorRetrieveDestroyAPIView(RetrieveUpdateDestroyAPIView):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+

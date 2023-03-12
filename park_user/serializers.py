@@ -26,7 +26,8 @@ class AuthorSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(f'Не удается создать пользователя. {e}')
         else:
             new_author = Author.objects.create(
-                user=new_user
+                user=new_user,
+                email=validated_data['email']
             )
             new_author.save()
             return new_author

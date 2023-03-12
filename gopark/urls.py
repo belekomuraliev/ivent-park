@@ -11,7 +11,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
 
-from park_user.views import AuthorRegisterAPIView
+from park_user.views import AuthorRegisterAPIView, AuthorRetrieveDestroyAPIView
 from park_app.views import IventCreateListAPIView,  IventRetrievUpdateDestroyAPIView, CreaterCreateListAPIView, \
     CreaterRetrievUpdateDestroyAPIView
 
@@ -36,6 +36,7 @@ urlpatterns = [
     path('api/auth/', include('rest_framework.urls')),
     path('api/auth/token/', obtain_auth_token),
     path('api/register/', AuthorRegisterAPIView.as_view()),
+    path('api/register/<int:pk>/', AuthorRetrieveDestroyAPIView.as_view()),
     path('api/ivent/', IventCreateListAPIView.as_view()),
     path('api/ivent/<int:pk>/', IventRetrievUpdateDestroyAPIView.as_view()),
     path('api/creater/', CreaterCreateListAPIView.as_view()),
